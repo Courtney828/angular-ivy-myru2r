@@ -1,0 +1,35 @@
+<h3>BOARD OF DIRECTORS</h3>
+<div class="container" *ngFor="let employee of employees">
+  
+<mat-card class="example-card" class="block" >
+  
+
+  <div class="block">
+    <span class="name">{{employee.name + " " + employee.surname}}</span>
+   <img mat-bcard-image src="https://t3.ftcdn.net/jpg/02/46/44/34/240_F_246443416_WrJ7Z5lQzA7b0nFHqLtZhuYLI3Z4dYxz.jpg"      
+    alt="Photo of a Shiba Inu">
+ 
+  <mat-card-content style="margin-bottom:0px">
+ 
+    <br>
+    <div class="block-text">
+    <span class="name-details">{{employee.position}}</span>
+    <br>
+    <span class="block-age">{{employee.age}}</span>
+
+     <mat-card-actions>
+    
+    <button mat-raised-button color="accent" class="update" (click)="update()">Update</button>
+
+      <button mat-raised-button (click)="openDialog(employee)" class="delete" color="warn">Delete</button>
+  
+  </mat-card-actions>
+    </div>
+     
+    
+    </mat-card-content>
+
+  </div> 
+  
+</mat-card>
+</div>
