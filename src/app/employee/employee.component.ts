@@ -9,8 +9,10 @@ import { DialogtwoComponent } from '../dialogtwo/dialogtwo.component';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
+newEmployeeClicked = false;
   constructor(public dialog: MatDialog) {}
+  color;
+  
 
 employees = [{name:"Julius", surname:"Mlambo", position:"CEO", age:27},
                    {name:"Peter", surname:"Brown", position:"Executive Director", age:32},
@@ -90,7 +92,59 @@ openDialog(Employee) {
     })
   }
 
-  ngOnInit() {
+  
+model: any = {};
+  model2: any = {}; 
+
+  addEmployee() {
+    this.employees.push(this.model);
+    this.model = {};
+  }
+
+  deleteEmployee(i) {
+    this.employees.splice(i);
+    console.log(i);
+  }
+
+  myValue;
+
+  editEmployee(editEmployeeInfo) {
+    this.model2.name = this.employees[editEmployeeInfo].name;
+    this.model2.position = this.employees[editEmployeeInfo].position;
+    this.myValue = editEmployeeInfo;
+  }
+
+  updateEmployee() {
+    let editEmployeeInfo = this.myValue;
+    for(let i = 0; i < this.employees.length; i++) {
+      if(i == editEmployeeInfo) {
+        this.employees[i] = this.model2;
+        this.model2 = {};
+      }
+    }
+  }
+
+
+
+
+
+  addNewEmployeeBtn() {
+    this.newEmployeeClicked = !this.newEmployeeClicked;
+  }
+
+   changeColorOne() {
+     this.color = !this.color;
+     if (this.color) {
+       return '#ffffff';
+     } else {
+      return '#f6f6f6';
+     }
+  }
+
+
+
+ngOnInit() {
   }
 
 }
+
